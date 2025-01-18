@@ -7,6 +7,6 @@ This repsository contains <br>
 
 - a jupyter notebook script to use TabPFN for classification of individuals into populations that can be downloaded. You just have to change the input paths to your test and training data. <br>
 - an  Grafical User Interface to use TabPFN for classification of individuals into populations. <br> 
-- Example Test and Trainingsdata  (Test_example.csv, Train_exmaple.csv). This data is simulated. <br>
+- Example Test and Trainingsdata  (data_test.csv, data_train.csv). This data is simulated. <br>
 - the code that was used to prepare the data of our paper "Enhancing BGA Prediction with machine learning" <br>
 - the code to plot the confusion matrices (plot_conufsion_matrix.py). <br>
