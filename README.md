@@ -12,7 +12,7 @@ This repsository contains <br>
 - Example Test and Trainingsdata  (data_test.csv, data_train.csv). This data is simulated. <br>
 - Example output data. This contains the ROC AUC, the log loss and the accuracy (example_results.json) . Additionally, it contrains the classification of every unclassified individual into a population and the corresponding prediction probabilities (examples_results_individuals.csv). <br>
 - the code that was used to prepare the data of our paper "Enhancing BGA Prediction with machine learning" (Extract_EUROPEAN.py, Extract_continents.py) <br>
-- the code to plot the confusion matrices (plot_conufsion_matrix.py) in the folder Cross_Validation_Code. <br>
+- the code to plot the confusion matrices (Confusion_matrix.py) in the folder Cross_Validation_Code. You also find python code to plot the mean evaluation metrix and the confidence interval of this metric. <br>
 
 
 # Usage
