@@ -21,6 +21,7 @@ To use the graphical user interface, download the repository and install the req
 
 ```bash
 streamlit run Streamlit_TabPFN.py
+```bash
 
 Then, you can use the example test and trainings data or you can upload your own data. <br>
 
