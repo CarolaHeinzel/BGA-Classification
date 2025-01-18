@@ -1,4 +1,4 @@
-pfad = 'C:\\Users\\carol\\OneDrive\\Desktop\\Promotion\\Kooperationen\\Leannart\\Data_Lennart.xlsx'
+pfad = 'Data.xlsx'
 
 
 import pandas as pd
@@ -22,7 +22,6 @@ desired_categories = [
     'MIDDLE EAST', 'OCEANIAN', 'AMERICAN'
 ]
 
-# Filtern des DataFrames, um nur die gewünschten Kategorien zu behalten
 filtered_df = df_interesting[df_interesting.iloc[:,1].isin(desired_categories)]
 
 population_counts =filtered_df.iloc[:,1].value_counts()
