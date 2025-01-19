@@ -1,4 +1,4 @@
-path  = 'C:\\Users\\carol\\OneDrive\\Desktop\\Promotion\\Kooperationen\\Leannart\\Data_Lennart.xlsx'
+path  = 'Data.xlsx'
 
 
 import pandas as pd
