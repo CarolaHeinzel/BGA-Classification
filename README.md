@@ -9,7 +9,7 @@ This repsository contains <br>
 - a python script to use TabPFN for classification of individuals into populations that can be downloaded. You just have to change the input paths to your test and training data (Application_TabPFN.py). <br>
 - a python script that was used to run our experiments (in the folder CrossValidation_Code).
 - an  Grafical User Interface to use TabPFN for classification of individuals into populations (Streamlit_TabPFN.py). <br> 
-- Example Test and Trainingsdata  (data_test.csv, data_train.csv). This data is simulated. <br>
+- Example test and training data  (data_test.csv, data_train.csv). This data is simulated. <br>
 - Example output data. This contains the ROC AUC, the log loss and the accuracy (example_results.json) . Additionally, it contrains the classification of every unclassified individual into a population and the corresponding prediction probabilities (examples_results_individuals.csv). <br>
 - the code that was used to prepare the data of our paper "Enhancing BGA Prediction with machine learning" (Extract_EUROPEAN.py, Extract_continents.py) <br>
 - the code to plot the confusion matrices (Confusion_matrix.py) in the folder Cross_Validation_Code. You also find python code to plot the mean evaluation metrix and the confidence interval of this metric. <br>
@@ -24,5 +24,3 @@ streamlit run Streamlit_TabPFN.py
 ```
 
 Then, you can use the example test and trainings data or you can upload your own data. <br>
-
-To use the jupyter notebook, just download it. Then, with Jupyter Notebooks, you can change the input paths to your training and test data. <br>
