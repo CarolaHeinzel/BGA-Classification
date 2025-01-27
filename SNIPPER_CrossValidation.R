@@ -4,8 +4,6 @@ library(pROC)
 
 # Parts of this code are from the SNIPPER website (http://mathgene.usc.es/snipper/offline_snipper.html)
 
-training <- read.xlsx("train_data1_eur.xlsx", sheet=1,na.strings=c("NN", ""))
-test <- read.xlsx("test_data1_eur.xlsx", sheet=1,na.strings=c("NN", ""))
 results <- data.frame(File = character(),
                       Accuracy = numeric(),
                       ROC_AUC = numeric(),
@@ -58,4 +56,4 @@ for (i in 1:10) {
 
 
 write.csv(results, "results_SNIPPER_eur.csv", row.names = FALSE)
-write.csv(pred_data, "all_predictions_eur_SNIPPER.csv", row.names = FALSE)
+write.csv(all_predictions_continents, "all_predictions_eur_SNIPPER.csv", row.names = FALSE)
