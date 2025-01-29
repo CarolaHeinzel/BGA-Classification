@@ -32,8 +32,8 @@ def load_data() -> tuple[pd.DataFrame, pd.Series, pd.DataFrame, list[int]]:
             return None, None, None, None
     else:
         # Example data paths (replace with actual repository paths)
-        train_file = "data_train.csv"
-        test_file = "data_test.csv"
+        train_file = "train_data_eur.csv"
+        test_file = "test_data_eur.csv"
         data_train = pd.read_csv(train_file).astype("category")
         data_test = pd.read_csv(test_file).astype("category")
 
@@ -107,6 +107,8 @@ def main():
     
     st.write("This is a graphical user interface to classify individuals into populations based on their genotypes.")
     st.write("It uses TabPFN by Hollmann et al. (2025), which was published in *Nature*.")
+    st.write("The test and training data are based on data from different data sets as summarized by Ruiz-Ramirez in *Development and evaluations of the ancestry informative markers of the visage enhanced tool for appearance and ancestry*.")
+    st.write("The runtime of the code with the example data from the repository is about two minutes without a GPU..")
     st.write("If a GPU is available, the code will automatically utilize it, significantly speeding up the process.")
     st.write("It is important that you use the correct format as presented in the Training Data Preview and Test Data Preview.")
     st.write("The comparison of TabPFN to other classification methods has been described in [our paper](https://example.com).")
