@@ -7,6 +7,7 @@ import numpy as np
 from sklearn.base import BaseEstimator
 from tabpfn import TabPFNClassifier
 import torch
+#import matplotlib.pyplot as plt
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 st.write(f"Using device: {device}") 
@@ -143,23 +144,7 @@ def main():
                 prob_data =[]
                 for i, (pred_class, probabilities) in enumerate(zip(result["Predicted Class"], result["Prediction Probabilities"])):
                     st.write(f"TabPFN classifies individual {i} into {pred_class}.")
-            # Display predictions
-            for result in predictions:
-                st.write("Predicted Probabilities:")
-                prob_data =[]
-                for i, (pred_class, probabilities) in enumerate(zip(result["Predicted Class"], result["Prediction Probabilities"])):
-                    st.write(f"Prediction Probabilities for individual {i}:")
-                    for j, prob in enumerate(probabilities):  # Iterate over class probabilities
-                        st.write(f"Population {result['Classes'][j]}:")
-                        st.progress(int(prob * 100))  
-                        prob_data.append({
-                            "Index of the individual": i,
-                            "Class": result['Classes'][j],
-                            "Probability": prob
-                                })
-                        class_name = result['Classes'][j]
-                        display_progress_bar(prob, class_name)
-    
+
                 all_predictions.append(prob_data)
                 # Flatten the list of dictionaries (one dictionary per model prediction)
             flat_predictions = [item for sublist in all_predictions for item in sublist]
