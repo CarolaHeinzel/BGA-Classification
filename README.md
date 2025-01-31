@@ -20,7 +20,7 @@ This repsository contains:
 
 # Usage: Web Tool
 
-See xxx for an online version of the Grapical User Interface. Note that there are no data protection rules on the server where this interface runs.
+See [herer](https://bga-classification-xjmafspgoed8xh65fyfddh.streamlit.app/) for an online version of the Grapical User Interface. Note that there are no data protection rules on the server where this interface runs.
 
 # Usage: Local Graphical User Interface
 
