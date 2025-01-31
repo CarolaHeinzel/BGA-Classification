@@ -14,14 +14,14 @@ This repsository contains:
 * `Extract_EUROPEAN.py`, `Extract_continents.py`: the code that was used to prepare the data of our paper [Enhancing BGA Prediction with machine learning](xxx).
 * `Cross_Validation_Code/Confusion_matrix.py`: the code to plot the confusion matrices. 
 * `Cross_Validation_Code/run_plotting.py`: python code to plot the mean of ROC AUC, accuracy and logloss (or any other metric) and its confidence interval.
-* `SNIPPER_CrossValidation.R`: Code for the Cross Validation with SNIPPER
-* `PLS_DA_CrossValidation.py`: Code for the Cross Validation with PLS-DA
-* `Admixture_Model_CrossValidation.py`:  Code for the Cross Validation with the Admixture Model
+* `Cross_Validation_Code/SNIPPER_CrossValidation.R`: Code for the Cross Validation with SNIPPER
+* `Cross_Validation_Code/PLS_DA_CrossValidation.py`: Code for the Cross Validation with PLS-DA
+* `Cross_Validation_Code/Admixture_Model_CrossValidation.py`:  Code for the Cross Validation with the Admixture Model
 
 
 # Usage: Web Tool
 
-See [herer](https://bga-classification-xjmafspgoed8xh65fyfddh.streamlit.app/) for an online version of the Grapical User Interface. Note that there are no data protection rules on the server where this interface runs.
+See [here](https://bga-classification-xjmafspgoed8xh65fyfddh.streamlit.app/) for an online version of the Grapical User Interface. Note that there are no data protection rules on the server where this interface runs.
 
 # Usage: Local Graphical User Interface
 
