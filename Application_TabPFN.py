@@ -18,10 +18,9 @@ def get_dataset(train_data_path, test_data_path) -> [pd.DataFrame, pd.Series, li
     data_train = data_train.astype("category")
     data_test = data_test.astype("category")
     X_test = data_test
-    X_train = data_train.drop(columns=["Population"])
+    X_train = data_train
+    #X_train = data_train.drop(columns=["Population"])
     y_train = data_train["Population"]
-    print(X_train, y_train)
-    print(X_test)
     categorical_features_indices = [i for i, col in enumerate(X_train.columns) if X_train[col].dtype.name == "category"]
     print(categorical_features_indices)
     return X_train, y_train, X_test, categorical_features_indices
@@ -50,19 +49,13 @@ def run_single_split(
 
     for model_name, model in models.items():
         model.fit(X_train, y_train)
+        classes = model.classes_
         y_pred_proba = model.predict_proba(X_test)
         y_pred = model.predict(X_test)
+        raw_predictions.append(y_pred_proba.tolist())
+    
 
-
-        raw_predictions.append(
-            {
-                "Model": model_name,
-                "Predictions": y_pred.tolist(),
-                "Predictions Probabilities": y_pred_proba.tolist(),
-            },
-        )
-
-    return raw_predictions
+    return raw_predictions, classes
 
 
 def run_experiments(train_data_path, test_data_path):
@@ -70,12 +63,9 @@ def run_experiments(train_data_path, test_data_path):
     X_train, y_train, X_test, categorical_features_indices = get_dataset(train_data_path, test_data_path)
 
     models = get_models(categorical_features_indices=categorical_features_indices)
-    raw_predictions = run_single_split(X_train=X_train, X_test=X_test, y_train=y_train, models=models)
-    print(raw_predictions)
-    with open("results_examples.json", "w") as f:
-        json.dump(raw_predictions, f)
-
-
+    raw_predictions, classes = run_single_split(X_train=X_train, X_test=X_test, y_train=y_train, models=models)
+    df = pd.DataFrame(raw_predictions[0], columns=classes)
+    df.to_csv("prediction_prob.csv", index=False)
 
 if __name__ == "__main__":
     train_data_path = "train_data_eur.csv"  # Change it to your training data
