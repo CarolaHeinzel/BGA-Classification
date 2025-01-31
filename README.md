@@ -10,7 +10,7 @@ This repsository contains:
 * `CrossValidation_Code/run_experiments.py`: a python script that was used to run our experiments.
 * `Streamlit_TabPFN.py`: a  Grafical User Interface to use TabPFN for classification of individuals into populations, which runs in the Browser.  
 * `data_test.csv`, `data_train.csv`: Example test and training data. This is a subset of the data published as a Supplemental (`1-s2.0-S1872497323000285-mmc5.xlsx`) of [Ruiz-Ramirez et al](https://pubmed.ncbi.nlm.nih.gov/36917866/).
-- `results_examples.json`: Example output data. This contains the ROC AUC, the log loss and the accuracy. Additionally, it contains the classification of every unclassified individual into a population and the corresponding prediction probabilities (examples_results_individuals.csv). <br>
+- `prediction_prob.csv`: Example output prediction probabilites. <br>
 * `Extract_EUROPEAN.py`, `Extract_continents.py`: the code that was used to prepare the data of our paper [Enhancing BGA Prediction with machine learning](xxx).
 * `Cross_Validation_Code/Confusion_matrix.py`: the code to plot the confusion matrices. 
 * `Cross_Validation_Code/run_plotting.py`: python code to plot the mean of ROC AUC, accuracy and logloss (or any other metric) and its confidence interval.
