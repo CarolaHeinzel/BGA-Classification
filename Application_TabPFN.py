@@ -9,11 +9,8 @@ from tabpfn import TabPFNClassifier
 from sklearn.base import BaseEstimator
 
 
-def get_dataset() -> [pd.DataFrame, pd.Series, list[int]]:
+def get_dataset(train_data_path, test_data_path) -> [pd.DataFrame, pd.Series, list[int]]:
     """Read in data for experiment."""
-
-    train_data_path = "data_train.csv"  # Change it to your training data
-    test_data_path = "data_test.csv"  # Change it to your data with unkown labels
 
     data_train = pd.read_csv(train_data_path)
     data_test = pd.read_csv(test_data_path)
@@ -70,9 +67,9 @@ def run_single_split(
     return raw_predictions
 
 
-def run_experiments():
+def run_experiments(train_data_path, test_data_path):
     """Run our experiments."""
-    X_train, y_train, X_test, categorical_features_indices = get_dataset()
+    X_train, y_train, X_test, categorical_features_indices = get_dataset(train_data_path, test_data_path)
 
     models = get_models(categorical_features_indices=categorical_features_indices)
     raw_predictions = run_single_split(X_train=X_train, X_test=X_test, y_train=y_train, models=models)
@@ -83,4 +80,6 @@ def run_experiments():
 
 
 if __name__ == "__main__":
-    run_experiments()
+    train_data_path = "train_data_eur.csv"  # Change it to your training data
+    test_data_path = "test_data_eur.csv"  # Change it to your data with unkown labels
+    run_experiments(train_data_path, test_data_path)

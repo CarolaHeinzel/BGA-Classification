@@ -2,25 +2,43 @@
 
 # Overview
 
-This repository contains code to classify individuals based on an AIM set into populations. The code was built with TabPFN (https://github.com/PriorLabs/tabpfn#-license), which has been published in Nature "Accurate predictions on small data with a tabular foundation model" by Hollmann et al.  <br>
+This repository contains code to classify individuals based on an AIM set into populations. The code was built with [TabPFN](https://github.com/PriorLabs/tabpfn#-license), which has been published in [Nature]() "[Accurate predictions on small data with a tabular foundation model] by Hollmann et al.  <br>
 
-This repsository contains <br>
+This repsository contains:
 
-- a python script to use TabPFN for classification of individuals into populations that can be downloaded. You just have to change the input paths to your test and training data (Application_TabPFN.py). <br>
-- a python script that was used to run our experiments (in the folder CrossValidation_Code).
-- an  Grafical User Interface to use TabPFN for classification of individuals into populations (Streamlit_TabPFN.py). <br> 
-- Example test and training data  (data_test.csv, data_train.csv). This data is simulated. <br>
-- Example output data. This contains the ROC AUC, the log loss and the accuracy (example_results.json) . Additionally, it contrains the classification of every unclassified individual into a population and the corresponding prediction probabilities (examples_results_individuals.csv). <br>
-- the code that was used to prepare the data of our paper "Enhancing BGA Prediction with machine learning" (Extract_EUROPEAN.py, Extract_continents.py) <br>
-- the code to plot the confusion matrices (Confusion_matrix.py) in the folder Cross_Validation_Code. You also find python code to plot the mean evaluation metrix and the confidence interval of this metric. <br>
+* `Application_TabPFN.py`: to use TabPFN for classification of individuals into populations that can be downloaded. You just have to change the input paths to your test and training data (Application_TabPFN.py).
+* `CrossValidation_Code/run_experiments.py`: a python script that was used to run our experiments.
+* `Streamlit_TabPFN.py`: a  Grafical User Interface to use TabPFN for classification of individuals into populations, which runs in the Browser.  
+* `data_test.csv`, `data_train.csv`: Example test and training data. This is a subset of the data published as a Supplemental (`1-s2.0-S1872497323000285-mmc5.xlsx`) of [Ruiz-Ramirez et al](https://pubmed.ncbi.nlm.nih.gov/36917866/).
+- `results_examples.json`: Example output data. This contains the ROC AUC, the log loss and the accuracy. Additionally, it contains the classification of every unclassified individual into a population and the corresponding prediction probabilities (examples_results_individuals.csv). <br>
+* `Extract_EUROPEAN.py`, `Extract_continents.py`: the code that was used to prepare the data of our paper [Enhancing BGA Prediction with machine learning](xxx).
+* `Cross_Validation_Code/Confusion_matrix.py`: the code to plot the confusion matrices. 
+* `Cross_Validation_Code/run_plotting.py`: python code to plot the mean of ROC AUC, accuracy and logloss (or any other metric) and its confidence interval.
+* `SNIPPER_CrossValidation.R`: xxx
+* TODO: Same with other two methods
 
 
-# Usage
+# Usage: Web Tool
 
-To use the graphical user interface, download the repository and install the requirements. Afterwards, type
+See xxx for an online version of the Grapical User Interface. Note that there are no data protection rules on the server where this interface runs.
 
+# Usage: Local Graphical User Interface
+
+To use the graphical user interface, download the repository and install the requirements using
+```
+pip install -r requirements.txt
+```
+Afterwards, type
 ```bash
 streamlit run Streamlit_TabPFN.py
 ```
 
-Then, you can use the example test and trainings data or you can upload your own data. <br>
+Then, your browser should open and you can use the example test and trainings data or you can upload your own data. <br>
+
+# Usage: Command Line
+
+With
+```
+python Application_TabPFN.py
+```
+a TabPFN run is performed on `train_data_eur.csv` and `test_data_eur.csv`. Change the file according to your needs if it should run on a different dataset.

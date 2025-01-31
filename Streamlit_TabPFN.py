@@ -104,15 +104,16 @@ def display_progress_bar(probability, class_name):
 
 # Streamlit interface
 def main():
-    st.title("TabPFN Classifier Experiment")
-    
+    st.title("The TabPFN Classifier for Biogeographical Ancestry")
+    st.write("This is a Graphical User Interface for the usage of [TabPFN](https://github.com/PriorLabs/tabpfn#-license) as a classifier as performed in [Advancing Biogeographical Ancestry Predictions Through Machine Learning](xxx) by Heinzel, Purucker, Hutter and Pfaffelhuber.")
+    st.write("The full code, which also contains the comparisons to other classifiers, can be found on [github](https://github.com/CarolaHeinzel/BGA-Classification/).")
+
+    st.write("")    
     st.write("This is a graphical user interface to classify individuals into populations based on their genotypes.")
-    st.write("It uses TabPFN by Hollmann et al. (2025), which was published in *Nature*.")
-    st.write("The test and training data are based on data from different data sets as summarized by Ruiz-Ramirez in *Development and evaluations of the ancestry informative markers of the visage enhanced tool for appearance and ancestry*.")
-    st.write("The runtime of the code with the example data from the repository is about two minutes without a GPU..")
+    st.write("The test and training data are based on data from different data sets which can be found in the Supplemental (1-s2.0-S1872497323000285-mmc5.xlsx) of [Ruiz-Ramirez et al, *Development and evaluations of the ancestry informative markers of the visage enhanced tool for appearance and ancestry*](https://pubmed.ncbi.nlm.nih.gov/36917866/).")
+    st.write("The runtime of the code with the example data from the repository is about two minutes without a GPU.")
     st.write("If a GPU is available, the code will automatically utilize it, significantly speeding up the process.")
     st.write("It is important that you use the correct format as presented in the Training Data Preview and Test Data Preview.")
-    st.write("The comparison of TabPFN to other classification methods has been described in [our paper](https://example.com).")
         
     # Load data
     st.sidebar.write("## Step 1: Load Data")
