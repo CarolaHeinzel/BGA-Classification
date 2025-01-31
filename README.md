@@ -14,8 +14,9 @@ This repsository contains:
 * `Extract_EUROPEAN.py`, `Extract_continents.py`: the code that was used to prepare the data of our paper [Enhancing BGA Prediction with machine learning](xxx).
 * `Cross_Validation_Code/Confusion_matrix.py`: the code to plot the confusion matrices. 
 * `Cross_Validation_Code/run_plotting.py`: python code to plot the mean of ROC AUC, accuracy and logloss (or any other metric) and its confidence interval.
-* `SNIPPER_CrossValidation.R`: xxx
-* TODO: Same with other two methods
+* `SNIPPER_CrossValidation.R`: Code for the Cross Validation with SNIPPER
+* `PLS_DA_CrossValidation.py`: Code for the Cross Validation with PLS-DA
+* `Admixture_Model_CrossValidation.py`:  Code for the Cross Validation with the Admixture Model
 
 
 # Usage: Web Tool
