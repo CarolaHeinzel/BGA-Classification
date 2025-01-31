@@ -25,7 +25,6 @@ def get_dataset() -> [pd.DataFrame, pd.Series, list[int]]:
     y_train = data_train["Population"]
     print(X_train, y_train)
     print(X_test)
-    # Indizes der kategorischen Merkmale finden
     categorical_features_indices = [i for i, col in enumerate(X_train.columns) if X_train[col].dtype.name == "category"]
     print(categorical_features_indices)
     return X_train, y_train, X_test, categorical_features_indices
@@ -34,10 +33,9 @@ def get_dataset() -> [pd.DataFrame, pd.Series, list[int]]:
 def get_models(categorical_features_indices: list[int]) -> dict[str, BaseEstimator]:
     """Sklearn models to compare."""
     return {
-         # TabPFN Modell aus dem Nature Paper
         "TabPFN": TabPFNClassifier(
-            random_state=np.random.RandomState(42),  # Kontrolle des Zufallsgenerators
-            categorical_features_indices=categorical_features_indices  # Definiere, welche Merkmale kategorisch sind
+            random_state=np.random.RandomState(42),  
+            categorical_features_indices=categorical_features_indices  
         ),
     }
 
