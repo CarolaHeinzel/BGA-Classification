@@ -24,7 +24,8 @@ def load_data() -> tuple[pd.DataFrame, pd.Series, pd.DataFrame, list[int]]:
     if data_source == "Upload your own CSV files":
         train_file = st.sidebar.file_uploader("Upload training data (CSV)", type="csv")
         test_file = st.sidebar.file_uploader("Upload test data (CSV)", type="csv")
-
+        if train_file is None or test_file is None:
+            st.stop()
         if train_file is not None and test_file is not None:
             data_train = pd.read_csv(train_file).astype("category")
             data_test = pd.read_csv(test_file).astype("category")
@@ -78,7 +79,7 @@ def run_single_split(
 ) -> list[dict]:
     """Train and evaluate models on a single train-test split."""
     raw_predictions = []
-
+    pp = []
     for model_name, model in models.items():
         model.fit(X_train, y_train)
         y_pred_proba = model.predict_proba(X_test)
@@ -93,8 +94,8 @@ def run_single_split(
                 "Prediction Probabilities": y_pred_proba.tolist(),
             },
         )
-
-    return raw_predictions
+        pp.append(y_pred_proba.tolist())
+    return raw_predictions, classes, pp
 
 def display_progress_bar(probability, class_name):
     """Display progress bar with probability and class name."""
@@ -102,19 +103,15 @@ def display_progress_bar(probability, class_name):
     st.markdown(f"<div style='text-align: center; color: blue;'> Prediction Probability of {class_name}: {probability * 100:.2f}% </div>", unsafe_allow_html=True)
 
 
-# Streamlit interface
 def main():
     st.title("The TabPFN Classifier for Biogeographical Ancestry")
     st.write("This is a Graphical User Interface for the usage of [TabPFN](https://github.com/PriorLabs/tabpfn#-license) as a classifier as performed in [Advancing Biogeographical Ancestry Predictions Through Machine Learning](xxx) by Heinzel, Purucker, Hutter and Pfaffelhuber.")
     st.write("The full code, which also contains the comparisons to other classifiers, can be found on [github](https://github.com/CarolaHeinzel/BGA-Classification/).")
-
-    st.write("")    
     st.write("This is a graphical user interface to classify individuals into populations based on their genotypes.")
     st.write("The test and training data are based on data from different data sets which can be found in the Supplemental (1-s2.0-S1872497323000285-mmc5.xlsx) of [Ruiz-Ramirez et al, *Development and evaluations of the ancestry informative markers of the visage enhanced tool for appearance and ancestry*](https://pubmed.ncbi.nlm.nih.gov/36917866/).")
     st.write("The runtime of the code with the example data from the repository is about two minutes without a GPU.")
     st.write("If a GPU is available, the code will automatically utilize it, significantly speeding up the process.")
     st.write("It is important that you use the correct format as presented in the Training Data Preview and Test Data Preview.")
-        
     # Load data
     st.sidebar.write("## Step 1: Load Data")
     data = load_data()
@@ -138,26 +135,41 @@ def main():
         with st.spinner("The computer is calculating..."):
             st.write("### Results")
             models = get_models(categorical_features_indices)
-            predictions = run_single_split(X_train, X_test, y_train, models)
+            predictions, classes,pp = run_single_split(X_train, X_test, y_train, models)
+            st.write(pp)
             all_predictions = []
+            df = pd.DataFrame(pp[0], columns=classes)
+
             for result in predictions:
                 st.write("Predicted Ancestral Populations:")
-                prob_data =[]
+                
+                unique_classes = sorted(set(result["Predicted Class"]))  
+                prob_data = []
+                
                 for i, (pred_class, probabilities) in enumerate(zip(result["Predicted Class"], result["Prediction Probabilities"])):
                     st.write(f"TabPFN classifies individual {i} into {pred_class}.")
+                    
+                    row = {"Individual": i, "Predicted Class": pred_class}
+                    for pop, prob in zip(unique_classes, probabilities):
+                        row[pop] = prob 
+                    
+                    prob_data.append(row)
+                
+                all_predictions.append(prob_data)  #
 
-                all_predictions.append(prob_data)
-                # Flatten the list of dictionaries (one dictionary per model prediction)
-            flat_predictions = [item for sublist in all_predictions for item in sublist]
-        
-        # Convert the flattened list of dictionaries to a DataFrame
-            predictions_df = pd.DataFrame(flat_predictions)
-            st.download_button(
-                label="Download Prediction Probabilities as CSV",
-                data=predictions_df.to_csv(index=False),
-                file_name="prediction_probabilities.csv",
-                mime="text/csv"
-            )
+
+            st.session_state["predictions_df"] = df
+            st.session_state["predictions_display"] = all_predictions
+
+    if "predictions_display" in st.session_state:
+
+        st.download_button(
+            label="Download Prediction Probabilities as CSV",
+            data=st.session_state["predictions_df"].to_csv(index=False),
+            file_name="prediction_probabilities.csv",
+            mime="text/csv"
+        )
+
 
 
 if __name__ == "__main__":
