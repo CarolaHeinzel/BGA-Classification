@@ -17,6 +17,7 @@ This repsository contains:
 * `Cross_Validation_Code/SNIPPER_CrossValidation.R`: Code for the Cross Validation with SNIPPER
 * `Cross_Validation_Code/PLS_DA_CrossValidation.py`: Code for the Cross Validation with PLS-DA
 * `Cross_Validation_Code/Admixture_Model_CrossValidation.py`:  Code for the Cross Validation with the Admixture Model
+* `Cross_Validation_Code/TabPFN_RandomForest_XGBoost_CrossValidation.py`:  Code for the Cross Validation with TabPFN, XGBoost, RandomForest
 
 
 # Usage: Web Tool
