@@ -4,7 +4,7 @@ import numpy as np
 import json
 
 
-with open('results_examples.json', 'r') as file:
+with open('raw_predictions_continents_tabPFN(1).json', 'r') as file:
     data = json.load(file)
 
 first_key = next(iter(data[0]))
