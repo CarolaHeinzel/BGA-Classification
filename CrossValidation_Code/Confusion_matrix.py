@@ -33,8 +33,8 @@ for i in range(n):
 flattened_list_pred = [item for sublist in pred for item in sublist]
 flattened_list_true = [item for sublist in true for item in sublist]
 
-true_labels_1 = flattened_list_pred
-predictions_1 = flattened_list_true
+true_labels_1 = flattened_list_true
+predictions_1 = flattened_list_pred
 
 mapping = {'AFRICAN': 'AFR', 'AMERICAN': 'EUR', 'EAST ASIAN': 'EAS', 'EUROPEAN': 'EUR', 'MIDDLE EAST': 'ME', 'OCEANIAN': 'OCE', 'SOUTH ASIAN':'SAS'}
 
@@ -73,4 +73,3 @@ def plot_confusion_matrix(true_labels, predictions, title, vmin, vmax):
 
 vmin, vmax = 0, 1  
 plot_confusion_matrix(true_labels_1, predictions_1, "", vmin, vmax)
-
