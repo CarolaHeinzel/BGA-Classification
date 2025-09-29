@@ -11,7 +11,7 @@ This repsository contains:
 * `Streamlit_TabPFN.py`: a  Grafical User Interface to use TabPFN for classification of individuals into populations, which runs in the Browser.  
 * `data_test.csv`, `data_train.csv`: Example test and training data. This is a subset of the data published as a Supplemental (`1-s2.0-S1872497323000285-mmc5.xlsx`) of [Ruiz-Ramirez et al](https://pubmed.ncbi.nlm.nih.gov/36917866/).
 - `prediction_prob.csv`: Example output prediction probabilites. <br>
-* `Extract_EUROPEAN.py`, `Extract_continents.py`: the code that was used to prepare the data of our paper [Enhancing BGA Prediction with machine learning](xxx).
+* `Extract_EUROPEAN.py`, `Extract_continents.py`: the code that was used to prepare the data of our paper [Enhancing BGA Prediction with machine learning](https://www.sciencedirect.com/science/article/pii/S1872497325000705).
 * `Cross_Validation_Code/Confusion_matrix.py`: the code to plot the confusion matrices. 
 * `Cross_Validation_Code/run_plotting.py`: python code to plot the mean of ROC AUC, accuracy and logloss (or any other metric) and its confidence interval.
 * `Cross_Validation_Code/SNIPPER_CrossValidation.R`: Code for the Cross Validation with SNIPPER
