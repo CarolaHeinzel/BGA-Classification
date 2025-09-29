@@ -44,3 +44,8 @@ With
 python Application_TabPFN.py
 ```
 a TabPFN run is performed on `train_data_eur.csv` and `test_data_eur.csv`. Change the file according to your needs if it should run on a different dataset.
+
+
+### Funding Acknowledgement
+
+Funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) – Project-ID 499552394 – SFB 1597.
